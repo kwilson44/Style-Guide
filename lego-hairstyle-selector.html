@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusive LEGO Character Creator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hair-display.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><button class="btn-icon btn-icon-head" onclick="window.location.reload();">🧱</button> Inclusive LEGO Character Creator 
+                <a href="https://womensbrickinitiative.com/"><img src="images/logo.png" alt="WBI" style="float:right;width:62px;height:62px;"></a></h1>
+            <p>Explore, learn, and create your unique LEGO character while celebrating diversity and representation. Help us advocate for more inclusive LEGO parts!</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+            <p id="progressText" style="text-align: center; margin-top: 5px;">Step 1 of 4</p>
+        </div>
+
+        <!-- Flesh Tone Selection Section -->
+        <div class="section" id="fleshToneSection">
+            <h2 class="section-title">Choose A LEGO Flesh Tone (using real black women icons!)</h2>
+            <div class="selection-grid" id="fleshToneGrid">
+                <!-- Flesh tone options will be generated here -->
+            </div>
+        </div>
+
+        <!-- Expression Selection Section -->
+        <div class="section" id="expressionSection" style="display: none;">
+            <h2 class="section-title">Select Your Expression</h2>
+            <div class="selection-grid" id="expressionGrid">
+                <!-- Expression options will be generated here -->
+            </div>
+        </div>
+
+        <!-- Accessories Selection Section -->
+        <div class="section" id="accessoriesSection" style="display: none;">
+            <h2 class="section-title">Add Accessories (Optional)</h2>
+            <div class="accessory-toggle" id="accessoryToggle">
+                <!-- Glasses -->
+                <div class="accessory-item">
+                    <img src="images/light-nougat-glasses.jpg" alt="Light Nougat Glasses" class="accessory-image">
+                    <div>
+                        <strong>Glasses</strong>
+                        <p>Classic eyeglasses for all flesh tones.</p>
+                    </div>
+                </div>
+                <div class="accessory-item">
+                    <img src="images/vitiligo-pattern-glasses.jpg" alt="Vitiligo Pattern Glasses" class="accessory-image">
+                    <div>
+                        <strong>Glasses</strong>
+                        <p>Classic eyeglasses for vitiligo pattern.</p>
+                    </div>
+                </div>
+
+                <!-- Hearing Aid -->
+                <div class="accessory-item">
+                    <img src="images/medium-nougat-hearing-aid.jpg" alt="Medium Nougat Hearing Aid" class="accessory-image">
+                    <div>
+                        <strong>Hearing Aid</strong>
+                        <p>Behind-the-ear hearing aid for medium nougat flesh tone.</p>
+                    </div>
+                </div>
+
+                <!-- Cochlear Implant -->
+                <div class="accessory-item">
+                    <img src="images/dark-brown-cochlear-implant.jpg" alt="Dark Brown Cochlear Implant" class="accessory-image">
+                    <div>
+                        <strong>Cochlear Implant</strong>
+                        <p>External cochlear implant processor for dark brown flesh tone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hair Selection Section -->
+        <div class="section" id="hairSection">
+            <h2 class="section-title">Find Your Perfect Hairstyle</h2>
+            
+            <div class="hair-selection">
+                <!-- Categories -->
+                <div class="style-grid">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+
+                <!-- Results -->
+                <div class="hair-results" id="hairResults" style="display: none;">
+                    <div class="results-header">
+                        <h3>Available Styles</h3>
+                        <div class="filter-buttons">
+                            <button class="color-btn active" data-color="all">All Colors</button>
+                            <button class="color-btn" data-color="natural">Natural Colors</button>
+                            <button class="color-btn" data-color="fantasy">Fantasy Colors</button>
+                        </div>
+                    </div>
+                    <div class="hair-grid" id="hairGrid"></div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="navigation-buttons">
+                <button class="btn btn-back" onclick="previousStep()">← Back</button>
+                <button class="btn btn-next" onclick="nextStep()" disabled id="nextHairStep">
+                    Continue →
+                </button>
+            </div>
+        </div>
+
+        <!-- Character Preview -->
+        <div class="section character-preview" id="characterPreview" style="display: none;">
+            <div class="lego-figure">
+                <div class="lego-preview">
+                    <div class="lego-hair" id="previewHair"></div>
+                    <div class="lego-head" id="previewHead"></div>
+                </div>
+            </div>
+            <div id="characterInfo" class="character-info"></div>
+        </div>
+
+        <!-- Final Actions -->
+        <div class="final-actions" id="finalActions" style="display: none;">
+            <h3>Share Your Creation</h3>
+            <button class="btn btn-primary" onclick="saveCharacter()">💾 Save Character</button>
+            <button class="btn btn-secondary" onclick="shareCharacter()">📤 Share Design</button>
+            <button class="btn btn-suggest" onclick="suggestPart()">💡 Suggest Missing Part</button>
+            <button class="btn btn-primary" onclick="startOver()">🔄 Create Another</button>
+            
+            <div class="call-to-action">
+                <h4>Representation Matters</h4>
+                <p>Help us advocate for more inclusive LEGO parts! Missing a part? Let LEGO know by clicking "Suggest to LEGO" on unavailable options.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="availability-data.js"></script>
+    <script src="index.js"></script>
+    <script src="hair-display.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize hair selector
+            window.hairSelector = new HairSelector();
+            
+            // Show initial section
+            document.getElementById('hairResults').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
