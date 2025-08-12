@@ -41,14 +41,6 @@ The following image types are needed:
 - Accessory images
 - UI elements (logos, icons)
 
-## Contributing
-
-When adding new features, please maintain the focus on:
-- Inclusive representation
-- Accurate part data
-- User-friendly interface
-- Mobile responsiveness
-
 ## Technologies Used
 
 - HTML5
@@ -56,13 +48,6 @@ When adding new features, please maintain the focus on:
 - Vanilla JavaScript
 - JSON for data storage
 
-## Future Improvements
-
-- [ ] Add more hairstyle options
-- [ ] Implement save/share functionality
-- [ ] Add more accessibility features
-- [ ] Expand expression availability
-- [ ] Improve mobile responsiveness
 
 ## License
 
