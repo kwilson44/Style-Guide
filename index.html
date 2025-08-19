@@ -3,20 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>Hair Styler</title>
-  <!-- CSS files -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="hair-display.css">
 </head>
 <body>
   <h1>Welcome to Hair Styler</h1>
-  <div id="hairstyles-container"></div>
 
-  <!-- Data files -->
-  <script src="hair-data.json" type="application/json"></script>
-  <script src="black_coded_hair_pieces.json" type="application/json"></script>
+  <!-- Progress Bar -->
+  <div id="progressBar">
+    <div id="progressFill"></div>
+    <span id="progressText">Step 1 of 3</span>
+  </div>
+
+  <!-- Flesh Tone Section -->
+  <section id="fleshToneSection">
+    <h2>Select Flesh Tone</h2>
+    <div id="fleshToneGrid"></div>
+  </section>
+
+  <!-- Expression Section -->
+  <section id="expressionSection" style="display:none;">
+    <h2>Select Expression</h2>
+    <div id="expressionGrid"></div>
+  </section>
+
+  <!-- Hair Section -->
+  <section id="hairSection" style="display:none;">
+    <h2>Select Hair</h2>
+    <!-- Hair categories (hair-display.js) -->
+    <div class="style-grid"></div>
+    <div id="hairResults" style="display:none;">
+      <div id="hairGrid"></div>
+      <button id="nextHairStep" disabled>Continue</button>
+    </div>
+
+    <!-- Hair carousel (index.js) -->
+    <div id="hairCarousel"></div>
+  </section>
+
+  <!-- Character Preview -->
+  <section id="characterPreview" style="display:none;">
+    <h2>Your Character</h2>
+    <div id="previewHead"></div>
+    <div id="previewHair"></div>
+    <div id="characterInfo"></div>
+  </section>
+
+  <!-- Final Actions -->
+  <section id="finalActions" style="display:none;">
+    <button onclick="saveCharacter()">Save</button>
+    <button onclick="shareCharacter()">Share</button>
+    <button onclick="startOver()">Start Over</button>
+  </section>
+
+  <!-- Tooltip -->
+  <div id="tooltip" class="tooltip"></div>
+
+  <!-- Scripts -->
   <script src="availability-data.js"></script>
-
-  <!-- Main JS files -->
   <script src="index.js"></script>
   <script src="hair-display.js"></script>
 </body>
