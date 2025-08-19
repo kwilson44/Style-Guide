@@ -1,4 +1,4 @@
-# Inclusive LEGO Character Creator
+# LEGO Style Guide
 
 A web-based tool that allows users to create and customize LEGO minifigures with a focus on diversity and representation. This project specifically highlights options for Black-coded hairstyles and diverse flesh tones.
 
