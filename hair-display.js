@@ -20,22 +20,22 @@ class HairSelector {
         const categories = {
             braided: {
                 title: 'Braided Styles',
-                icon: '🔄',
+                image: 'images/braided_button.jpg',
                 description: 'Braids, twists, and cornrows'
             },
             coiled: {
                 title: 'Coiled/Afro',
-                icon: '🌀',
+                image: 'images/coiled_button.jpg',
                 description: 'Afros, coils, and natural curls'
             },
             locs: {
                 title: 'Locs',
-                icon: '〰️',
+                image: 'images/locs_button.jpg',
                 description: 'Dreadlocks and locs styles'
             },
             updo: {
                 title: 'Updos & Buns',
-                icon: '⬆️',
+                image: 'images/updo_button.jpg',
                 description: 'Top knots and formal styles'
             }
         };
@@ -46,7 +46,7 @@ class HairSelector {
         styleGrid.innerHTML = Object.entries(categories)
             .map(([key, cat]) => `
                 <button class="style-btn" data-style="${key}">
-                    <span class="style-icon">${cat.icon}</span>
+                    <img src="${cat.image}" alt="${cat.title}" class="style-icon">
                     <h3>${cat.title}</h3>
                     <p>${cat.description}</p>
                 </button>
@@ -194,20 +194,29 @@ class HairSelector {
 
 function updateFinalPreview(selections) {
     const previewContainer = document.getElementById('characterPreview');
+    const selectedHair = JSON.parse(localStorage.getItem('selectedHair') || '{}');
+    const selectedExpression = localStorage.getItem('selectedExpression');
+
     previewContainer.innerHTML = `
         <div class="final-preview">
             <div class="preview-images">
-                <img src="images/heads/${selections.fleshTone}/${selections.expression}.png" 
-                     alt="Selected head" class="preview-head">
-                <img src="images/hair/${selections.hairStyle}.png" 
-                     alt="Selected hairstyle" class="preview-hair">
+                <div class="head-container">
+                    <img src="images/${selectedHair.item_number}.png" 
+                         alt="${selectedHair.description}"
+                         class="preview-hair-final">
+                    <div class="expression-container">
+                        <img src="images/${selections.fleshTone.toLowerCase()}-${selectedExpression.toLowerCase()}.png" 
+                             alt="Selected expression" 
+                             class="preview-expression">
+                    </div>
+                </div>
             </div>
             <div class="character-info">
                 <h3>Your LEGO Character</h3>
                 <ul>
                     <li>Flesh Tone: ${selections.fleshTone}</li>
-                    <li>Expression: ${selections.expression}</li>
-                    <li>Hairstyle: ${selections.hairStyle}</li>
+                    <li>Expression: ${selectedExpression}</li>
+                    <li>Hairstyle: ${selectedHair.description}</li>
                     ${selections.accessories ? `<li>Accessories: ${selections.accessories.join(', ')}</li>` : ''}
                 </ul>
             </div>
